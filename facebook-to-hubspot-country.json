@@ -1,0 +1,312 @@
+[
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "país",
+          "expression": "value",
+          "columnName": "country",
+          "invert": true,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "España",
+                "l": "España"
+              }
+            },
+            {
+              "v": {
+                "v": "ES",
+                "l": "ES"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "country",
+    "description": "Remove column country"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "phone_number",
+          "expression": "grel:value.contains(\"p:+\")",
+          "columnName": "phone_number",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "phone_number",
+          "expression": "grel:value.contains(\"p:+34\")",
+          "columnName": "phone_number",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "phone_number",
+    "expression": "grel:\"\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column phone_number using expression grel:\"\""
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "phone_number",
+          "expression": "grel:value.contains(\"p:+34\")",
+          "columnName": "phone_number",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "phone_number",
+    "expression": "grel:value.replace(\"p:+34\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column phone_number using expression grel:value.replace(\"p:+34\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "phone_number",
+          "expression": "grel:value.contains(\"p:\")",
+          "columnName": "phone_number",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "phone_number",
+    "expression": "grel:value.replace(\"p:\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column phone_number using expression grel:value.replace(\"p:\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "phone_number",
+          "columnName": "phone_number",
+          "query": "^[6789]\\d{8}$",
+          "mode": "regex",
+          "caseSensitive": false,
+          "invert": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "phone_number",
+    "expression": "grel:\"\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column phone_number using expression grel:\"\""
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "phone_number",
+    "newColumnName": "Phone number",
+    "description": "Rename column phone_number to Phone number"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "email",
+    "newColumnName": "Email",
+    "description": "Rename column email to Email"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "last_name",
+    "newColumnName": "Last name",
+    "description": "Rename column last_name to Last name"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "first_name",
+    "newColumnName": "First name",
+    "description": "Rename column first_name to First name"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "form_id",
+    "description": "Remove column form_id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "campaign_id",
+    "description": "Remove column campaign_id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "adset_id",
+    "description": "Remove column adset_id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "id",
+    "description": "Remove column id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ad_id",
+    "description": "Remove column ad_id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "Phone number",
+          "columnName": "Phone number",
+          "query": "^[67]\\d{8}$",
+          "mode": "regex",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Phone number",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Mobile phone number",
+    "columnInsertIndex": 11,
+    "description": "Create column Mobile phone number at index 11 based on column Phone number using expression grel:value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "Phone number",
+          "columnName": "Phone number",
+          "query": "^[67]\\d{8}$",
+          "mode": "regex",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Phone number",
+    "expression": "grel:\"\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Phone number using expression grel:\"\""
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "platform",
+    "description": "Remove column platform"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "is_organic",
+    "description": "Remove column is_organic"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "form_name",
+    "description": "Remove column form_name"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "adset_name",
+    "description": "Remove column adset_name"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ad_name",
+    "description": "Remove column ad_name"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "created_time",
+    "description": "Remove column created_time"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "campaign_name",
+    "description": "Remove column campaign_name"
+  }
+]
