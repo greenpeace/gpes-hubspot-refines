@@ -93,5 +93,99 @@
     "oldColumnName": "Correo electrónico",
     "newColumnName": "email",
     "description": "Rename column Correo electrónico to email"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ad_id",
+    "description": "Remove column ad_id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ad_name",
+    "newColumnName": "utm_content",
+    "description": "Rename column ad_name to utm_content"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "adgroup_id",
+    "description": "Remove column adgroup_id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "adgroup_name",
+    "newColumnName": "utm_term",
+    "description": "Rename column adgroup_name to utm_term"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "campaign_name",
+    "newColumnName": "utm_campaign",
+    "description": "Rename column campaign_name to utm_campaign"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "form_id",
+    "description": "Remove column form_id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "form_name",
+    "description": "Remove column form_name"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "created_time",
+    "expression": "grel:\"post-promocionado\"",
+    "onError": "set-to-blank",
+    "newColumnName": "utm_medium",
+    "columnInsertIndex": 2,
+    "description": "Create column utm_medium at index 2 based on column created_time using expression grel:\"post-promocionado\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "utm_medium",
+    "expression": "grel:\"tiktok\"",
+    "onError": "set-to-blank",
+    "newColumnName": "utm_source",
+    "columnInsertIndex": 3,
+    "description": "Create column utm_source at index 3 based on column utm_medium using expression grel:\"tiktok\""
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "campaign_id",
+    "index": 7,
+    "description": "Move column campaign_id to position 7"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "lead_id",
+    "description": "Remove column lead_id"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "created_time",
+    "expression": "grel:value.split(\" \")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_time using expression grel:value.split(\" \")[0]"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "created_time",
+    "newColumnName": "signup_date",
+    "description": "Rename column created_time to signup_date"
   }
 ]
