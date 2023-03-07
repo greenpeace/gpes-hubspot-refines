@@ -13,6 +13,10 @@ There's this two files. Apply them accordingly to the country/país field:
 - facebook-to-hubspot-country.json
 - facebook-to-hubspot-pais.json
 
+## Tiktok lead forms
+
+- tiktok-to-hubspot-json
+
 ## Greenwire contacts
 
 See also the following documents:
