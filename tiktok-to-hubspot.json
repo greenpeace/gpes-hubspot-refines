@@ -264,5 +264,10 @@
     "op": "core/column-removal",
     "columnName": "phone_number",
     "description": "Remove column phone_number"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "campaign_id",
+    "description": "Remove column campaign_id"
   }
 ]
