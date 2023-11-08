@@ -1,0 +1,165 @@
+[
+    {
+      "op": "core/column-reorder",
+      "columnNames": [
+        "Email",
+        "Phone Number",
+        "Mobile Phone Number"
+      ],
+      "description": "Reorder columns"
+    },
+    {
+      "op": "core/column-addition",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "baseColumnName": "Mobile Phone Number",
+      "expression": "grel:value",
+      "onError": "set-to-blank",
+      "newColumnName": "Phone",
+      "columnInsertIndex": 3,
+      "description": "Create column Phone at index 3 based on column Mobile Phone Number using expression grel:value"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Phone",
+            "expression": "isBlank(value)",
+            "columnName": "Phone",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": true,
+                  "l": "true"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          },
+          {
+            "type": "list",
+            "name": "Phone Number",
+            "expression": "isBlank(value)",
+            "columnName": "Phone Number",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": false,
+                  "l": "false"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "columnName": "Phone",
+      "expression": "grel:cells[\"Phone Number\"].value",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Phone using expression grel:cells[\"Phone Number\"].value"
+    },
+    {
+      "op": "core/column-removal",
+      "columnName": "Phone Number",
+      "description": "Remove column Phone Number"
+    },
+    {
+      "op": "core/column-removal",
+      "columnName": "Mobile Phone Number",
+      "description": "Remove column Mobile Phone Number"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Phone",
+            "expression": "isBlank(value)",
+            "columnName": "Phone",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": false,
+                  "l": "false"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "columnName": "Phone",
+      "expression": "grel:\"+34\" + value",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Add +34"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Email",
+      "expression": "jython:import hashlib\nimport random\nreturn str(hashlib.sha256(value.encode()).hexdigest())",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "SHA256 column Email"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Phone",
+            "expression": "isBlank(value)",
+            "columnName": "Phone",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": false,
+                  "l": "false"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "columnName": "Phone",
+      "expression": "jython:import hashlib\nimport random\nreturn str(hashlib.sha256(value.encode()).hexdigest())",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "SHA256 column Phone"
+    }
+  ]
